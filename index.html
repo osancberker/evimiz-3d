@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#1f2224" />
+  <title>Ev 3D — İç Mimari Planlama</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><path d='M4 15 16 5l12 10v12H4z' fill='%23c8643c'/><path d='M12 27v-8h8v8' fill='%23fff'/></svg>" />
+  <script type="module" crossorigin src="./assets/index-B8wm4hMN.js"></script>
+  <link rel="stylesheet" crossorigin href="./assets/index-BxmPUXFN.css">
+</head>
+<body>
+  <header id="topbar">
+    <div class="brand"><span class="logo">◧</span><div><b>Ev 3D</b><small id="projTitle">KİPTAŞ Yeşilpınar 3+1 · plan + video + fotoğraf</small></div></div>
+    <nav class="modes" id="modes">
+      <button data-mode="orbit" class="on" title="Serbest 3D inceleme (1)"><span class="lg">3D Plan</span><span class="sm">3D</span></button>
+      <button data-mode="top" title="Kuş bakışı plan (2)"><span class="lg">Kuş bakışı</span><span class="sm">Plan</span></button>
+      <button data-mode="section" title="Kesit / yan görünüş (3)"><span class="lg">Kesit</span><span class="sm">Kesit</span></button>
+      <button data-mode="walk" title="Birinci şahıs gezinti (4)"><span class="lg">Gezinti</span><span class="sm">Gez</span></button>
+    </nav>
+    <div class="right">
+      <select id="presets" title="Videodaki açılar / odalar"><option value="">🎥 Videodaki açılar…</option></select>
+      <button id="btnLabels" title="Oda isimlerini göster">🏷<span class="lg"> İsimler</span></button>
+      <button id="btnNight" title="Gece / gündüz">☀︎</button>
+      <button id="btnShot" class="desk" title="Ekran görüntüsü (PNG)">⤓ Görsel</button>
+      <button id="btnUndo" title="Geri al (Ctrl+Z)">↶</button>
+      <button id="btnRedo" class="desk" title="Yinele (Ctrl+Y)">↷</button>
+      <button id="btnPanel" class="mob" title="Panel (ölçüler, mobilya, görünüm)">☰</button>
+      <span id="saveState" class="save desk">●</span>
+    </div>
+  </header>
+
+  <aside id="side">
+    <div class="sheethead mob"><b>Panel</b><button id="btnPanelClose" title="Kapat">✕</button></div>
+    <div class="tabs" id="tabs">
+      <button data-tab="olcu" class="on">Ölçüler</button>
+      <button data-tab="mobilya">Mobilya</button>
+      <button data-tab="alt">Alternatifler</button>
+      <button data-tab="gorunum">Görünüm</button>
+    </div>
+    <section class="tab on" id="tab-olcu"></section>
+    <section class="tab" id="tab-mobilya"></section>
+    <section class="tab" id="tab-alt"></section>
+    <section class="tab" id="tab-gorunum"></section>
+  </aside>
+
+  <main id="viewport">
+    <div id="walkOverlay" class="hidden">
+      <div class="card">
+        <h3>Gezinti modu</h3>
+        <p class="desk-only">Başlamak için tıklayın</p>
+        <p class="touch-only">Başlamak için dokunun</p>
+        <ul class="desk-only">
+          <li><kbd>W A S D</kbd> / ok tuşları: yürü</li>
+          <li><kbd>Fare</kbd>: etrafa bak · <kbd>Shift</kbd>: hızlı</li>
+          <li><kbd>Q</kbd>/<kbd>E</kbd>: alçal / yüksel (göz hizası)</li>
+          <li><kbd>Esc</kbd>: duraklat</li>
+        </ul>
+        <ul class="touch-only">
+          <li>Ekranı <b>parmakla sürükleyin</b>: etrafa bakın</li>
+          <li><b>▲ ▼</b> basılı tutun: ileri / geri yürüyün</li>
+          <li><b>◀ ▶</b> basılı tutun: sola / sağa dönün</li>
+          <li>Üstteki <b>🎥</b> listesinden odalara atlayın</li>
+        </ul>
+      </div>
+    </div>
+    <div id="crosshair" class="hidden"></div>
+    <canvas id="minimap" class="hidden" width="260" height="140"></canvas>
+    <div id="walkPad" class="hidden">
+      <button class="up" data-k="KeyW" aria-label="İleri">▲</button>
+      <button class="left" data-turn="1" aria-label="Sola dön">◀</button>
+      <button class="right" data-turn="-1" aria-label="Sağa dön">▶</button>
+      <button class="down" data-k="KeyS" aria-label="Geri">▼</button>
+    </div>
+    <div id="inspector" class="hidden"></div>
+    <div id="toast"></div>
+  </main>
+
+  <footer id="status">
+    <span id="stArea"></span>
+    <span id="stConf"></span>
+    <span id="stHint">Sol tık: seç / sürükle · Sağ tık: kaydır · Teker: yakınlaş · Q/E: döndür · Del: sil</span>
+  </footer>
+</body>
+</html>
